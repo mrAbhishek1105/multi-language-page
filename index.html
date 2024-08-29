@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .content{
+            width: 65%;
+        }
+        button{
+            padding: 3px;
+            background-color: bisque;
+            border: 3px solid rgb(231, 50, 110);
+            border-radius: 20px;
+            font-size: larger;
+        }
+    .content p{
+        display: none;
+    }
+    .language-toggle button{
+        display: none;
+    }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <p style="text-align: center;" id="content-en">Click on Button to change Language.</p>
+        <p style="text-align: center;" id="content-fr">Cliquez sur le bouton pour changer de langue..</p>
+        <p id="content-en">Hello! I'm Abhishek Kumar, a 5th-semester B.Tech student at JIET. My passion lies in web development, where I specialize in the MERN stack (MongoDB, Express.js, React, Node.js) and Python. I enjoy creating dynamic and responsive web applications that solve real-world problems.</p>
+
+        <p id="content-fr">Bonjour ! Je suis Abhishek Kumar, étudiant en 5ème semestre de B.Tech à JIET. Ma passion est le développement web, où je me spécialise dans la pile MERN (MongoDB, Express.js, React, Node.js) et Python. J'aime créer des applications web dynamiques et responsives qui résolvent des problèmes concrets.</p>
+    </div>
+    
+    <div class="language-toggle">
+        <button id="language-en">English</button>
+        <button id="language-fr">Français</button>
+    </div>
+
+
+    <script>
+        const langB = document.querySelectorAll('.language-toggle button');
+        const cont = document.querySelectorAll('.content p');
+
+        function showlanguage(language){
+            cont.forEach(section=>{
+                if (section.id === `content-${language}`){
+                    section.style.display = 'block';
+                }else{
+                    section.style.display = 'none';
+                }
+            });
+            langB.forEach(button =>{
+            if (button.id === `language-${language}`){
+            button.style.display = 'none';
+            } else {
+            button.style.display = 'block';
+            }
+        });  
+        };
+        langB.forEach(button =>{
+            button.addEventListener('click', () =>{
+                showlanguage(button.id.replace('language-', ''));
+            });
+
+        });
+        showlanguage('en');
+    </script>
+</body>
+</html>
